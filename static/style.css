@@ -1,0 +1,138 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Navigation bar */
+nav {
+    background: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    padding: 0;
+    list-style: none;
+}
+
+nav ul li {
+    display: inline;
+    padding: 0 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+nav a:hover {
+    color: #c0c0c0;
+}
+
+/* Header */
+header {
+    background: #50b3a2;
+    color: #fff;
+    padding-top: 30px;
+    min-height: 70px;
+    border-bottom: #e8491d 3px solid;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+/* Form styles */
+form {
+    background: #fff;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+form input[type="submit"] {
+    background: #333;
+    color: #fff;
+    border: 0;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+form input[type="submit"]:hover {
+    background: #50b3a2;
+}
+
+
+/* Flash messages */
+.flash-msg {
+    background: #e8491d;
+    color: #fff;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: center;
+}
+
+/* Lists */
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+ul li {
+    background: #fff;
+    margin: 5px 0;
+    padding: 10px;
+    border: #ddd 1px solid;
+}
+
+ul li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+ul li a:hover {
+    color: #50b3a2;
+}
+
+/* Footer */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+
+#movie_poster {
+    max-width: 50%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

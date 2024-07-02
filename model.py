@@ -6,20 +6,37 @@ db = SQLAlchemy()
 
 
 class User(db.Model):
-   """A user."""
+    """A user."""
 
-   __tablename__ = "users"
+    __tablename__ = "users"
 
-   user_id = db.Column(db.Integer,
-                  autoincrement=True,
-                  primary_key=True)
-   email = db.Column(db.String, unique=True)
-   password = db.Column(db.String)
+    user_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    email = db.Column(db.String, unique=True)
+    password = db.Column(db.String)
 
     # ratings = a list of Rating objects
 
-   def __repr__(self):
-      return f'<User user_id={self.user_id} email={self.email}>'
+    def __repr__(self):
+        return f"<User user_id={self.user_id} email={self.email}>"
+
+    @classmethod
+    def create(cls, email, password):
+       """Create and return a new user."""
+
+       return cls(email=email, password=password)
+
+    @classmethod
+    def get_by_id(cls, user_id):
+        return cls.query.get(user_id)
+
+    @classmethod
+    def get_by_email(cls, email):
+        return cls.query.filter(User.email == email).first()
+
+    @classmethod
+    def all_users(cls):
+        return cls.query.all()
+
 
 class Movie(db.Model):
     """A movie."""
@@ -35,10 +52,31 @@ class Movie(db.Model):
     # ratings = a list of Rating objects
 
     def __repr__(self):
-        return f'<Movie movie_id={self.movie_id} title={self.title}>'
+        return f"<Movie movie_id={self.movie_id} title={self.title}>"
 
+    @classmethod
+    def create(cls, title, overview, release_date, poster_path):
+        """Create and return a new movie."""
+
+        return cls(
+            title=title,
+            overview=overview,
+            release_date=release_date,
+            poster_path=poster_path,
+            )
+    @classmethod
+    def all_movies(cls):
+        """Return all movies."""
+
+        return cls.query.all()
+
+    @classmethod
+    def get_by_id(cls, movie_id):
+        """Return a movie by primary key."""
+
+        return cls.query.get(movie_id)
 class Rating(db.Model):
-    """Movie Rating"""
+    """A movie rating."""
 
     __tablename__ = "ratings"
 
@@ -51,7 +89,19 @@ class Rating(db.Model):
     user = db.relationship("User", backref="ratings")
 
     def __repr__(self):
-        return f'<Rating rating_id={self.rating_id} score={self.score}>'
+        return f"<Rating rating_id={self.rating_id} score={self.score}>"
+
+    @classmethod
+    def create(cls, user, movie, score):
+        """Create and return a new movie."""
+
+        return cls(user=user, movie=movie, score=score)
+
+    @classmethod
+    def update(cls, rating_id, new_score):
+        """ Update a rating given rating_id and the updated score. """
+        rating = cls.query.get(rating_id)
+        rating.score = new_score
 
 
 def connect_to_db(app):

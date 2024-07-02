@@ -3,13 +3,27 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>
       {% block title %}{% endblock %}
     </title>
 
-    {% block head %}{% endblock %}
+    {% block head %}
+      <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/movies">Movies</a></li>
+            <li><a href="/users">Users</a></li>
+        </ul>
+      </nav>
+    {% endblock %}
   </head>
   <body>
+    {% for msg in get_flashed_messages() %}
+    <p class="flash-msg">
+      {{ msg }}
+    </p>
+    {% endfor %}
     {% block body %}{% endblock %}
 
     {% block after_body %}{% endblock %}
